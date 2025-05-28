@@ -1,5 +1,7 @@
 #pragma once
 
+#include <globaldefs.h>
+
 struct PrimaryCombatStats {
     unsigned short currHP;
     unsigned short currMP;
@@ -42,5 +44,6 @@ struct BattleStruct {
     int unk4;
     struct CombatantStruct* combatantList[0xe9]; // TODO: validate this size as well as this struct as a whole
 };
-struct BattleStruct* GetBattleStruct();
-struct CombatantStruct* GetCombatantFromList(struct BattleStruct* battleStruct, int id);
+
+EXTERN_C struct BattleStruct* GetBattleStruct();
+EXTERN_C struct CombatantStruct* GetCombatantFromList(struct BattleStruct* battleStruct, int id);

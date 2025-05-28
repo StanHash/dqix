@@ -54,7 +54,7 @@ LD_FLAGS = " ".join([
     "-m Entry",             # Set entry function
     "-map closure,unused",  # Generate map file
     "-msgstyle gcc",        # Use GCC-like messages (some IDEs will make file names clickable)
-    "-nodead",              # allow dead code
+    "-dead",                # remove dead code
 ])
 DSD_OBJDIFF_ARGS = " ".join([
     "--scratch",                        # Metadata for creating decomp.me scratches

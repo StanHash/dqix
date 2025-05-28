@@ -3,21 +3,21 @@
 #include "System/Random.h"
 
 #ifdef jpn
-#define data_02108ddc data_02108d20
+    #define data_02108ddc data_02108d20
 #endif
 
-extern struct Random data_02108ddc;
+extern Random data_02108ddc;
 
-ARM int RoundUp(float attack) {
-	return 0.5f + attack;
+EXTERN_C ARM int RoundUp(float attack) {
+    return 0.5f + attack;
 }
 
-ARM float CalculatePhysicalDamage(int attack, int defense, struct Random* random) {
+EXTERN_C ARM float CalculatePhysicalDamage(int attack, int defense, Random* random) {
     float atkAsFloat;
     float defAsFloat;
     if (random == NULL) {
         random = &data_02108ddc;
-	}
+    }
     atkAsFloat = attack;
     defAsFloat = defense;
     defAsFloat /= 2.0f;
@@ -31,7 +31,7 @@ ARM float CalculatePhysicalDamage(int attack, int defense, struct Random* random
         if (atkAsFloat <= minimumDamage) {
             atkAsFloat = attack;
             atkAsFloat /= 16.0f;
-            atkAsFloat = NextRandomFloatBetween(random, 0.0f, atkAsFloat);
+            atkAsFloat = random->NextFloatBetween(0.0f, atkAsFloat);
         } else {
             float flatVariance;
             float percentageVarianceMaximum;
@@ -39,8 +39,8 @@ ARM float CalculatePhysicalDamage(int attack, int defense, struct Random* random
             float percentageVarianceMinimum = atkAsFloat / 16.0f;
             percentageVarianceMinimum = 0.0f - percentageVarianceMinimum;
             percentageVarianceMaximum = atkAsFloat / 16.0f;
-            percentageVariance = NextRandomFloatBetween(random, percentageVarianceMinimum, percentageVarianceMaximum);
-            flatVariance = NextRandomFloatBetween(random, -1.0f, 1.0f);
+            percentageVariance = random->NextFloatBetween(percentageVarianceMinimum, percentageVarianceMaximum);
+            flatVariance = random->NextFloatBetween(-1.0f, 1.0f);
             atkAsFloat += percentageVariance;
             atkAsFloat += flatVariance;
         }
@@ -48,13 +48,14 @@ ARM float CalculatePhysicalDamage(int attack, int defense, struct Random* random
     if (atkAsFloat < 0) {
         atkAsFloat = 0;
     }
-	return atkAsFloat;
+    return atkAsFloat;
 }
-ARM float CalculateAttackBuffMultiplier(signed char buffLevel) {
+
+EXTERN_C ARM float CalculateAttackBuffMultiplier(signed char buffLevel) {
     return 1.0f + 0.25f * buffLevel;
 }
 
-ARM float CalculateDefenseBuffMultiplier(signed char buffLevel) {
+EXTERN_C ARM float CalculateDefenseBuffMultiplier(signed char buffLevel) {
     // increases defense by 50% for each positive level; for -1 do 50% defense reducation, for -2 do 75% defense reduction.
     float levelFloat;
     float multiplier;
@@ -63,14 +64,15 @@ ARM float CalculateDefenseBuffMultiplier(signed char buffLevel) {
         multiplier = levelFloat * 0.5f;
         return 1.0f + multiplier;
     }
-    levelFloat = buffLevel+1;
+    levelFloat = buffLevel + 1;
     multiplier = levelFloat * 0.25f;
     multiplier = multiplier - 0.5f;
     return 1.0f + multiplier;
 }
 
-ARM float CalculateAgilityBuffMultiplier(signed char buffLevel) {
-    // increases defense by 50% for each positive level; for -1 do 50% defense reducation, for -2 do 75% defense reduction. Identical to defense
+EXTERN_C ARM float CalculateAgilityBuffMultiplier(signed char buffLevel) {
+    // increases defense by 50% for each positive level; for -1 do 50% defense reducation, for -2 do 75% defense reduction.
+    // Identical to defense
     float levelFloat;
     float multiplier;
     if (buffLevel >= 0) {
@@ -78,20 +80,20 @@ ARM float CalculateAgilityBuffMultiplier(signed char buffLevel) {
         multiplier = levelFloat * 0.5f;
         return 1.0f + multiplier;
     }
-    levelFloat = buffLevel+1;
+    levelFloat = buffLevel + 1;
     multiplier = levelFloat * 0.25f;
     multiplier = multiplier - 0.5f;
     return 1.0f + multiplier;
 }
 
-ARM float CalculateCharmBuffMultiplier(signed char buffLevel) {
+EXTERN_C ARM float CalculateCharmBuffMultiplier(signed char buffLevel) {
     return (buffLevel < 0) ? 1.0f : 1.0f + 0.5f * buffLevel;
 }
 
-ARM float CalculateMagicalMightBuffMultiplier(signed char buffLevel) {
+EXTERN_C ARM float CalculateMagicalMightBuffMultiplier(signed char buffLevel) {
     return 1.0f + 0.5f * buffLevel;
 }
 
-ARM float CalculateMagicalMendingBuffMultiplier(signed char buffLevel) {
+EXTERN_C ARM float CalculateMagicalMendingBuffMultiplier(signed char buffLevel) {
     return 1.0f + 0.5f * buffLevel;
 }

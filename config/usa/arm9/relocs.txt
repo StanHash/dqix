@@ -24614,7 +24614,7 @@ from:0x020d6c7c kind:arm_call to:0x020a1940 module:main
 from:0x020d6c8c kind:arm_call to:0x022a2180 module:overlays(33,34)
 from:0x020d6c98 kind:load to:0x0211e33c module:main
 from:0x020d6cc8 kind:arm_call to:0x020a1940 module:main
-from:0x020d6cd4 kind:arm_call to:0x021d8a40 module:overlays(23,24,25,26,27,28,30)
+from:0x020d6cd4 kind:arm_call to:0x021d8a40 module:overlay(30)
 from:0x020d6ce0 kind:arm_call to:0x020a1bb4 module:main
 from:0x020d6ce8 kind:arm_call to:0x0218b688 module:overlay(17)
 from:0x020d6cf0 kind:arm_call to:0x020a1940 module:main

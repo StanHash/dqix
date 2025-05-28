@@ -5,30 +5,30 @@
     .data       start:0x020eebe0 end:0x020f2e60 kind:data align:32
     .bss        start:0x020f2e60 end:0x021536e0 kind:bss align:32
 
-src/Combat/Main/BasicAttackCalculation.c:
+src/Combat/Main/BasicAttackCalculation.cpp:
     complete
     .text start:0x020744a8 end:0x02074738
 
-src/Combat/Main/TensionBonusCalculation.c:
+src/Combat/Main/TensionBonusCalculation.cpp:
 	complete
 	.text start:0x02074764 end:0x020747a4
 	
-src/Combat/Main/CritRateCalculation.c:
+src/Combat/Main/CritRateCalculation.cpp:
 	complete
 	.text start:0x020747a4 end:0x02074838
 
-src/Combat/Main/GetBattleList.c:
+src/Combat/Main/GetBattleList.cpp:
 	complete
 	.text start:0x0200f398 end:0x0200f3a4
 
-src/Combat/Main/GetCombatantFromList.c:
+src/Combat/Main/GetCombatantFromList.cpp:
 	complete
 	.text start:0x0200FE68 end:0x0200FEA4
 
-src/System/Random.c:
+src/System/Random.cpp:
 	complete
 	.text start:0x020741d0 end:0x020744a8
 
-src/System/Overlay.c:
+src/System/Overlay.cpp:
 	complete
 	.text start:0x020a1838 end:0x020a1940
