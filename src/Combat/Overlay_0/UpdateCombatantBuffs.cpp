@@ -3,7 +3,7 @@
 #include "Combat/Main/BattleList.h"
 #include "Combat/Main/CombatCalculations.h"
 
-EXTERN_C void UpdateCombatantAttack(int unused, int combatantId) {
+EXTERN_C ARM void UpdateCombatantAttack(int unused, int combatantId) {
     int maxAttack;
     struct BattleStruct* battleStruct;
     struct CombatantStruct* combatant;
@@ -33,7 +33,7 @@ EXTERN_C void UpdateCombatantAttack(int unused, int combatantId) {
     }
 }
 
-EXTERN_C void UpdateCombatantDefense(int unused, int combatantId) {
+EXTERN_C ARM void UpdateCombatantDefense(int unused, int combatantId) {
     int maxDefense;
     struct BattleStruct* battleStruct;
     struct CombatantStruct* combatant;
@@ -63,7 +63,7 @@ EXTERN_C void UpdateCombatantDefense(int unused, int combatantId) {
     }
 }
 
-EXTERN_C void UpdateCombatantAgility(int unused, int combatantId) {
+EXTERN_C ARM void UpdateCombatantAgility(int unused, int combatantId) {
     struct BattleStruct* battleStruct;
     struct CombatantStruct* combatant;
     unsigned int agility;
@@ -85,7 +85,7 @@ EXTERN_C void UpdateCombatantAgility(int unused, int combatantId) {
     }
 }
 
-EXTERN_C void UpdateCombatantCharm(int unused, int combatantId) {
+EXTERN_C ARM void UpdateCombatantCharm(int unused, int combatantId) {
     struct BattleStruct* battleStruct = GetBattleStruct();
     struct CombatantStruct* combatant = GetCombatantFromList(battleStruct, combatantId);
     float charmMultiplier;
@@ -107,7 +107,7 @@ EXTERN_C void UpdateCombatantCharm(int unused, int combatantId) {
     }
 }
 
-EXTERN_C void UpdateCombatantMagicalMight(int unused, int combatantId) {
+EXTERN_C ARM void UpdateCombatantMagicalMight(int unused, int combatantId) {
     unsigned short magicalMight;
     unsigned int magicalMightBuff;
     unsigned short magicalMightBuffed;
@@ -129,7 +129,7 @@ EXTERN_C void UpdateCombatantMagicalMight(int unused, int combatantId) {
     }
 }
 
-EXTERN_C void UpdateCombatantMagicalMending(int unused, int combatantId) {
+EXTERN_C ARM void UpdateCombatantMagicalMending(int unused, int combatantId) {
     unsigned short magicalMending;
     unsigned int magicalMendingBuff;
     unsigned short magicalMendingBuffed;
@@ -151,7 +151,7 @@ EXTERN_C void UpdateCombatantMagicalMending(int unused, int combatantId) {
     }
 }
 
-EXTERN_C void ApplyCombatantBuffs(int unused, int combatantId) {
+EXTERN_C ARM void ApplyCombatantBuffs(int unused, int combatantId) {
     UpdateCombatantAttack(unused, combatantId);
     UpdateCombatantDefense(unused, combatantId);
     UpdateCombatantAgility(unused, combatantId);

@@ -3,9 +3,9 @@
 #include <globaldefs.h>
 
 struct Random {
-    Random(char const* name, unsigned char unk_1C);
+    Random(char const *name, unsigned char unk_1C);
 
-    void Init(unsigned long long lcg_state, char const* name, unsigned char unk_1C);
+    void Init(unsigned long long lcg_state, char const *name, unsigned char unk_1C);
     void Seed64(unsigned long long lcg_state);
     void Seed(unsigned long long lcg_state);
     void Seed32(unsigned int stateHi, unsigned int stateLo);
@@ -35,14 +35,15 @@ struct Random {
     /* +00 */ unsigned long long lcg_state;
     /* +08 */ unsigned long long lcg_multiplier;
     /* +10 */ unsigned long long lcg_increment;
-    /* +18 */ char const* name;
+    /* +18 */ char const *name;
     /* +1C */ unsigned char unk_1C;
 };
 
 #ifdef jpn
-// TODO: all jpn aliases
-    #define NextRandomFloatBetween func_02075514
+    #define data_02108ddc data_02108d20
 #endif
 
+extern Random data_02108ddc;
+
 /* get instance of the global "BT" ("Hoimi table") random */
-EXTERN_C struct Random* GetBTRandom(void);
+EXTERN_C Random *GetBTRandom(void);

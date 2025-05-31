@@ -2,14 +2,8 @@
 
 #include "System/Random.h"
 
-#ifdef jpn
-    #define data_02108ddc data_02108d20
-#endif
-
-extern Random data_02108ddc;
-
 EXTERN_C ARM int RoundUp(float attack) {
-    return 0.5f + attack;
+	return 0.5f + attack;
 }
 
 EXTERN_C ARM float CalculatePhysicalDamage(int attack, int defense, Random* random) {
